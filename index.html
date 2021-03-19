@@ -19,7 +19,7 @@
   <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+  <link href="css/stylish-portfolio.css" rel="stylesheet">
 
 </head>
 
@@ -53,16 +53,28 @@
   </nav>
 
   <!-- Header -->
-  <header class="masthead d-flex">
-    <div class="container text-center my-auto">
-      <h1 class="mb-1">KRaE Laboratory</h1>
-      <h3 class="mb-5">
-        <em>by Bruno Sartini</em>
-      </h3>
-      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
-    </div>
+  <!-- <header class="masthead d-flex"> -->
+
+
+  
+  <!-- This image stretches exactly to the browser width/height and lies behind the video-->
+  <header>
     <div class="overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source src="./img/try.mp4" type="video/mp4">
+    </video>
+    <div class="container h-100">
+      <div class="d-flex h-100 text-center align-items-center">
+        <div class="w-100 text-black">
+          <h1 class="display-3">KRaE Laboratory</h1>
+          <p class="lead mb-0"><em>by Bruno Sartini</em></p>
+          <a class="btn btn-primary btn-xl js-scroll-trigger btn-pos" href="#about">Find Out More</a>
+        </div>
+      </div>
+    </div>
   </header>
+  <!-- </header> -->
+  
 
   <!-- About -->
   <section class="content-section bg-light" id="about">
