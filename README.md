@@ -27,11 +27,35 @@ The whole content of the lab will be found in the website https://br0ast.github.
 
 ## Timetable
 
-Available Soon
+| Lesson | Date       | Time        | Link          |
+|--------|------------|-------------|---------------|
+| 1      | 25/03/2021 | 14:30-17:30 | [Online Lesson](https://teams.microsoft.com/l/meetup-join/19%3ameeting_OGY2NmU5YjctYWRkZC00YTcwLWFiMmEtMTk4NDc3NWRlYmQx%40thread.v2/0?context=%7b%22Tid%22%3a%22e99647dc-1b08-454a-bf8c-699181b389ab%22%2c%22Oid%22%3a%2275ec71fb-141d-4930-a9df-7be4a17731a0%22%7d) |
+| 2      | 08/04/2021 | 14:30-17:30 | [Online Lesson](https://teams.microsoft.com/l/meetup-join/19%3ameeting_OGY2NmU5YjctYWRkZC00YTcwLWFiMmEtMTk4NDc3NWRlYmQx%40thread.v2/0?context=%7b%22Tid%22%3a%22e99647dc-1b08-454a-bf8c-699181b389ab%22%2c%22Oid%22%3a%2275ec71fb-141d-4930-a9df-7be4a17731a0%22%7d) |
+| 3      | 16/04/2021 | 14:30-17:30 | [Online Lesson](https://teams.microsoft.com/l/meetup-join/19%3ameeting_OGY2NmU5YjctYWRkZC00YTcwLWFiMmEtMTk4NDc3NWRlYmQx%40thread.v2/0?context=%7b%22Tid%22%3a%22e99647dc-1b08-454a-bf8c-699181b389ab%22%2c%22Oid%22%3a%2275ec71fb-141d-4930-a9df-7be4a17731a0%22%7d) |
+| 4      | 23/04/2021 | 14:30-17:30 | [Online Lesson](https://teams.microsoft.com/l/meetup-join/19%3ameeting_OGY2NmU5YjctYWRkZC00YTcwLWFiMmEtMTk4NDc3NWRlYmQx%40thread.v2/0?context=%7b%22Tid%22%3a%22e99647dc-1b08-454a-bf8c-699181b389ab%22%2c%22Oid%22%3a%2275ec71fb-141d-4930-a9df-7be4a17731a0%22%7d) |
+| 5      | 29/04/2021 | 14:30-17:30 | [Online Lesson](https://teams.microsoft.com/l/meetup-join/19%3ameeting_OGY2NmU5YjctYWRkZC00YTcwLWFiMmEtMTk4NDc3NWRlYmQx%40thread.v2/0?context=%7b%22Tid%22%3a%22e99647dc-1b08-454a-bf8c-699181b389ab%22%2c%22Oid%22%3a%2275ec71fb-141d-4930-a9df-7be4a17731a0%22%7d) |
 
 ## Lessons Content
 
-Available Soon
+### Lesson 1: Wikipedia-based Ontology Induction
+
+A frontal lesson on how to semi-automatically develop a domain-specific ontology by extracting, re-engineering the knowledge on DBpedia and Wikidata
+
+### Lesson 2: From Open Data to Linked Open Data: bottom-up approach to ontology development
+
+A participative lesson on how to transform open data into linked open data and how to develop your ontology starting from data. Students will be divided into groups and at the end of the lesson will present their work.
+
+### Lesson 3: Theory-based ontology deduction
+
+A participative lesson on how to develop an ontology starting from a specific theory of the interested domain. Students will be divided into groups and at the end of the lesson will present their work.
+
+### Lesson 4: Semantic virtual curation pt.1
+
+A participative lesson in which students will be asked to develop a semantic virtual curation.
+
+### Lesson 5: Semantic virtual curation pt.2
+
+Second part of the lesson based on a semantic virtual curation. At the end of the lesson students will present their work on their semantic virtual curation.
 
 ## Output of the mini-projects
 
