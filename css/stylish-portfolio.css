@@ -454,3 +454,8 @@ header .overlay {
     font-size: 1.5rem;
   }
 }
+
+.content-section {
+  padding-top: 9.19rem;
+  padding-bottom: 9.19rem;
+}

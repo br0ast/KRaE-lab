@@ -1,0 +1,378 @@
+@prefix : <http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56> .
+
+<http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#belongsToFaculty
+:belongsToFaculty rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Exam ;
+                  rdfs:range :Faculty .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#hasEvaluationType
+:hasEvaluationType rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Exam ;
+                   rdfs:range :EvaluationType .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#hasStructure
+:hasStructure rdf:type owl:ObjectProperty ;
+              rdfs:domain :Exam ;
+              rdfs:range :Structure .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#code
+:code rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Exam ;
+      rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#ComputerScience
+:ComputerScience rdf:type owl:Class ;
+                 rdfs:subClassOf :Faculty ;
+                 owl:disjointWith :FICLIT .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#ComputerScienceExam
+:ComputerScienceExam rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( :Exam
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :belongsToFaculty ;
+                                                                  owl:someValuesFrom :ComputerScience
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#EvaluationType
+:EvaluationType rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#Exam
+:Exam rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#FICLIT
+:FICLIT rdf:type owl:Class ;
+        rdfs:subClassOf :Faculty .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#FICLITExam
+:FICLITExam rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Exam
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :belongsToFaculty ;
+                                                         owl:someValuesFrom :FICLIT
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#Faculty
+:Faculty rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#KnowledgeOCH
+:KnowledgeOCH rdf:type owl:Class ;
+              rdfs:subClassOf :NamedExam ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :belongsToFaculty ;
+                                owl:someValuesFrom :FICLIT
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasEvaluationType ;
+                                owl:someValuesFrom :Project
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasStructure ;
+                                owl:someValuesFrom :Modular
+                              ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#KnowledgeRaE
+:KnowledgeRaE rdf:type owl:Class ;
+              rdfs:subClassOf :NamedExam ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :belongsToFaculty ;
+                                owl:someValuesFrom :FICLIT
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasEvaluationType ;
+                                owl:someValuesFrom :Oral
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasEvaluationType ;
+                                owl:someValuesFrom :Project
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasEvaluationType ;
+                                owl:someValuesFrom :Written
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasStructure ;
+                                owl:someValuesFrom :Modular
+                              ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#MachineLearning
+:MachineLearning rdf:type owl:Class ;
+                 rdfs:subClassOf :NamedExam ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :belongsToFaculty ;
+                                   owl:someValuesFrom :ComputerScience
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasEvaluationType ;
+                                   owl:someValuesFrom :Project
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasStructure ;
+                                   owl:someValuesFrom :Single
+                                 ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#Modular
+:Modular rdf:type owl:Class ;
+         rdfs:subClassOf :Structure ;
+         owl:disjointWith :Single .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#ModularExam
+:ModularExam rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Exam
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasStructure ;
+                                                          owl:someValuesFrom :Modular
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#MultiEvaluationExam
+:MultiEvaluationExam rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( :Exam
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :hasEvaluationType ;
+                                                                  owl:someValuesFrom :Oral
+                                                                ]
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :hasEvaluationType ;
+                                                                  owl:someValuesFrom :Project
+                                                                ]
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :hasEvaluationType ;
+                                                                  owl:someValuesFrom :Written
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#NamedExam
+:NamedExam rdf:type owl:Class ;
+           rdfs:subClassOf :Exam ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :code ;
+                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                           ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#Oral
+:Oral rdf:type owl:Class ;
+      rdfs:subClassOf :EvaluationType .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#OralEvaluationExam
+:OralEvaluationExam rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( :Exam
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :hasEvaluationType ;
+                                                                 owl:someValuesFrom :Oral
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#Project
+:Project rdf:type owl:Class ;
+         rdfs:subClassOf :EvaluationType .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#ProjectEvaluationExam
+:ProjectEvaluationExam rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( :Exam
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :hasEvaluationType ;
+                                                                    owl:someValuesFrom :Project
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#ScolarlyEditing
+:ScolarlyEditing rdf:type owl:Class ;
+                 rdfs:subClassOf :NamedExam ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :belongsToFaculty ;
+                                   owl:someValuesFrom :FICLIT
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasEvaluationType ;
+                                   owl:someValuesFrom :Oral
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasEvaluationType ;
+                                   owl:someValuesFrom :Project
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasEvaluationType ;
+                                   owl:someValuesFrom :Written
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasStructure ;
+                                   owl:someValuesFrom :Single
+                                 ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#SharedExam
+:SharedExam rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Exam
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :belongsToFaculty ;
+                                                         owl:someValuesFrom :ComputerScience
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :belongsToFaculty ;
+                                                         owl:someValuesFrom :FICLIT
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#Single
+:Single rdf:type owl:Class ;
+        rdfs:subClassOf :Structure .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#SingleExam
+:SingleExam rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Exam
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :hasStructure ;
+                                                         owl:someValuesFrom :Single
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#Structure
+:Structure rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Modular
+                                               :Single
+                                             )
+                               ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#Usability
+:Usability rdf:type owl:Class ;
+           rdfs:subClassOf :NamedExam ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :belongsToFaculty ;
+                             owl:someValuesFrom :ComputerScience
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :belongsToFaculty ;
+                             owl:someValuesFrom :FICLIT
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasEvaluationType ;
+                             owl:someValuesFrom :Oral
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasEvaluationType ;
+                             owl:someValuesFrom :Project
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasEvaluationType ;
+                             owl:someValuesFrom :Written
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasStructure ;
+                             owl:someValuesFrom :Single
+                           ] .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#Written
+:Written rdf:type owl:Class ;
+         rdfs:subClassOf :EvaluationType .
+
+
+###  http://www.semanticweb.org/bruno/ontologies/2021/2/untitled-ontology-56#WrittenEvaluationExam
+:WrittenEvaluationExam rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( :Exam
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :hasEvaluationType ;
+                                                                    owl:someValuesFrom :Written
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :EvaluationType
+                :Exam
+                :Faculty
+                :Structure
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :KnowledgeOCH
+                :KnowledgeRaE
+                :MachineLearning
+                :ScolarlyEditing
+                :Usability
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Oral
+                :Project
+                :Written
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
