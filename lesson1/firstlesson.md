@@ -397,7 +397,6 @@ ORDER BY ?egyptianculture
 We download the results of this query as a csv. We start to FILTER for each category. We take first ancient egypt, we copy those code and then go to http://removelinebreaks.net . We copy this list, go to a notepad and press ctrl + h (or go to edit, replace ) we replace "http://www.wikidata.org/entity/" with "wd:" . Then we can go on http://query.wikidata.org and do this query:
 
 ```sparql
-
 SELECT  ?entity ?entityLabel ?type ?typeLabel  WHERE { 
   VALUES ?entity {  wd:Q496002
   wd:Q253155
@@ -410,9 +409,10 @@ SELECT  ?entity ?entityLabel ?type ?typeLabel  WHERE {
   wd:Q7067835  wd:Q4920720  wd:Q7784429  wd:Q22936426  wd:Q3552228 }
  ?entity wdt:P31 ?type .
 SERVICE wikibase:label { bd:serviceParam wikibase:language "en,[AUTO_LANGUAGE]". }}
-group by  ?type ?typeLabel ?entityLabel
+GROUP BY  ?entity ?type ?typeLabel ?entityLabel
 
 ```
+[premodifiedquery]()
 We download the results in csv. We analyze them and decide which ones can be generalized and which ones are not interesting at all.
 
 The results are these 6 properties:
