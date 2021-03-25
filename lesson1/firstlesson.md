@@ -482,7 +482,7 @@ https://rdf2svg.redefer.rhizomik.net/
 
 The inducted ontology from our graph would be something like this
 
-@@@sparql
+```sparql
 PREFIX myont: <http://hello.it/> 
 PREFIX wd: <http://www.wikidata.org/entity/> 
 CONSTRUCT { myont:Mythology myont:about myont:CulturalContext . 
@@ -508,7 +508,7 @@ dbp:godOf owl:Thing;
 dbp:symbol owl:Thing;
 dbp:cultCenter dbc:Place .
  } WHERE {}
-@@@
+```
 
 
 ACTIVITY
