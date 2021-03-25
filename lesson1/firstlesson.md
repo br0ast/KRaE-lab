@@ -1,6 +1,6 @@
 # Lesson 1: Wikipedia-based ontology induction
 
-I want to construct a graph on Ancient Egyptian Culture, in particular, on Egyptian Deities and Mythology using Wikidata and DBpedia, and then formalize an ontology by remixing the semantic data of the two portals and (maybe) adding something else.
+I want to construct a graph on Ancient Egyptian Culture, with a particular focus on Egyptian Deities and Mythology using Wikidata and DBpedia, by remixing their data. An ontology Structure can be inducted from this structure.
 
 ## What are the portals we are going to query?
 
@@ -476,6 +476,40 @@ OPTIONAL {?god dbp:offspring ?offspring }
 OPTIONAL {?god dbp:sibilings ?sibilings}
  } 
 ```
+We can render this graph by going to
+
+https://rdf2svg.redefer.rhizomik.net/
+
+The inducted ontology from our graph would be something like this
+
+@@@sparql
+PREFIX myont: <http://hello.it/> 
+PREFIX wd: <http://www.wikidata.org/entity/> 
+CONSTRUCT { myont:Mythology myont:about myont:CulturalContext . 
+myont:HistoricalFact myont:isHistoricallyRelatedTo myont:CulturalContext .
+myont:HistoricalFact rdfs:superClassOf wd:Q11146759 , wd:Q11514315, wd:Q17524420, wd:Q3024240, wd:Q4204501 .
+myont:CulturalSite myont:isCulturalSiteRelatedTo myont:CulturalContext ;
+rdfs:superClassOf wd:Q39614,
+wd:Q839954 .
+myont:ArtisticMovement myont:isArtisticMovementOf myont:CulturalContext;
+rdfs:superClassOf wd:Q968159 .
+myont:Style myont:isStylisticallyRelatedTo myont:CulturalContext ;
+rdfs:equivalentClass wd:Q96338860 .
+myont:Controversy myont:isControversyOf myont:CulturalContext ;
+owl:equivalentClass wd:Q1255828 .
+myont:Movie myont:isCulturalMovieAbout myont:CulturalContext ;
+owl:equivalentClass wd:Q11424 .
+myont:Deity myont:belongsToMythology myont:Mythology ;
+dbp:parents myont:Deity ;
+dbp:consort myont:Deity ;
+dbp:offspring myont:Deity;
+dbp:sibilings myont:Deity ;
+dbp:godOf owl:Thing;
+dbp:symbol owl:Thing;
+dbp:cultCenter dbc:Place .
+ } WHERE {}
+@@@
+
 
 ACTIVITY
 
