@@ -29,12 +29,12 @@ SELECT ?objects {dbr:Egypt ?prop ?objects}
 ```
 
 
-Let's see every resource that is in the range of Egypt. There are a lot... let's try to count them
+Let's see every resource that is in the range of Egypt. There are a lot... let's try to COUNT them
 
 
 ```sparql
 
-SELECT (count(?objects) as?tot) {dbr:Egypt ?prop ?objects} 
+SELECT (COUNT(?objects) as?tot) {dbr:Egypt ?prop ?objects} 
 
 ```
 
@@ -51,7 +51,7 @@ We do this because a non-uri will never take the role of the subject in a triple
 
 ```sparql
 
-SELECT (count(DISTINCT ?objects)as ?tot) {dbr:Egypt ?prop ?objects .
+SELECT (COUNT(DISTINCT ?objects)as ?tot) {dbr:Egypt ?prop ?objects .
 ?objects ?prop2 ?moreobjects } 
 
 ```
@@ -186,22 +186,22 @@ GROUP BY ?egyptianculture
 
 ```
 
-Let's count them
+Let's COUNT them
 
 ```sparql
 
-SELECT (count(DISTINCT ?sub) as?tot)   { 
+SELECT (COUNT(DISTINCT ?sub) as?tot)   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Egyptian_mythology dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_deities dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub <http://www.w3.org/2004/02/skos/core#broader> ?egyptianculture } }
 
 ```
 
-Now let's divide the count by the category
+Now let's divide the COUNT by the category
 
 ```sparql
 
-SELECT ?egyptianculture (count(DISTINCT ?sub) as?tot)   { 
+SELECT ?egyptianculture (COUNT(DISTINCT ?sub) as?tot)   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Egyptian_mythology dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_deities dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub <http://www.w3.org/2004/02/skos/core#broader> ?egyptianculture } } group by ?egyptianculture
