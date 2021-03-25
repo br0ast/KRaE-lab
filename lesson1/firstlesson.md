@@ -520,10 +520,8 @@ dbp:cultCenter dbc:Place .
 
 ACTIVITY
 
+No spoiler :)
 
-Group 1 Needs to do the same for category: **Ancient_Egyptian_culture**
-Group 2 Needs to do the same for categories: **Book_of_the_Dead and Egyptian_legendary_creatures**
-Group 3 Needs to do the same for category: **Egyptian_culture**
-Group 4 Needs to do the same for categories: **Egyptian_mythology_in_popular_culture, Locations_in_Egyptian_mythology, Works_about_ancient_Egypt, Ancient_egypt_in_popular_culture**
+
 
 
