@@ -394,7 +394,11 @@ ORDER BY ?egyptianculture
 
 ```
 
-We download the results of this query as a csv. We start to FILTER for each category. We take first ancient egypt, we copy those code and then go to http://removelinebreaks.net . We copy this list, go to a notepad and press ctrl + h (or go to edit, replace ) we replace "http://www.wikidata.org/entity/" with "wd:" . Then we can go on http://query.wikidata.org and do this query:
+We download the results of this query as a csv.
+
+ [click here for the csv](https://github.com/br0ast/KRaE-lab/blob/main/lesson1/firstquery.csv) 
+ 
+ We start to FILTER for each category. We take first ancient egypt, we copy those code and then go to http://removelinebreaks.net . We copy this list, go to a notepad and press ctrl + h (or go to edit, replace ) we replace "http://www.wikidata.org/entity/" with "wd:" . Then we can go on http://query.wikidata.org and do this query:
 
 ```sparql
 SELECT  ?entity ?entityLabel ?type ?typeLabel  WHERE { 
@@ -412,8 +416,13 @@ SERVICE wikibase:label { bd:serviceParam wikibase:language "en,[AUTO_LANGUAGE]".
 GROUP BY  ?entity ?type ?typeLabel ?entityLabel
 
 ```
-[premodifiedquery]()
-We download the results in csv. We analyze them and decide which ones can be generalized and which ones are not interesting at all.
+
+We download the results in csv. 
+
+[click here for the csv](https://github.com/br0ast/KRaE-lab/blob/main/lesson1/secondquery.csv)
+
+
+We analyze them and decide which ones can be generalized and which ones are not interesting at all.
 
 The results are these 6 properties:
 
