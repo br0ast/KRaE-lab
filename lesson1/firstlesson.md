@@ -34,7 +34,7 @@ Let's see every resource that is in the range of Egypt. There are a lot... let's
 
 ```sparql
 
-SELECT (COUNT(?objects) as?tot) {dbr:Egypt ?prop ?objects} 
+SELECT (COUNT(?objects) AS ?tot) {dbr:Egypt ?prop ?objects} 
 
 ```
 
@@ -47,11 +47,11 @@ SELECT DISTINCT ?objects {dbr:Egypt ?prop ?objects .
 
 ```
 
-We do this because a non-uri will never take the role of the subject in a triple, so by doing this we are filtering them. Pay attention to the DISTINCT!
+We do this because a non-uri will never take the role of the subject in a triple, so by doing this we are FILTERing them. Pay attention to the DISTINCT!
 
 ```sparql
 
-SELECT (COUNT(DISTINCT ?objects)as ?tot) {dbr:Egypt ?prop ?objects .
+SELECT (COUNT(DISTINCT ?objects)AS ?tot) {dbr:Egypt ?prop ?objects .
 ?objects ?prop2 ?moreobjects } 
 
 ```
@@ -62,7 +62,7 @@ Let's see if there is something about culture in general!
 
 ```sparql
 
-ask {dbr:Culture ?something ?somethingelse}
+ASK {dbr:Culture ?something ?somethingelse}
 
 ```
 
@@ -102,7 +102,7 @@ Or this. Let's try to look for a regex.
 ```sparql
 
 SELECT DISTINCT ?egyptianculture { ?egyptianculture a skos:Concept .
-filter(regex(?egyptianculture, "egypt", "i")) }
+FILTER(regex(?egyptianculture, "egypt", "i")) }
 
 ```
 
@@ -111,8 +111,8 @@ It takes a lot of time, too many results, let's try with a double regex.
 ```sparql
 
 SELECT DISTINCT ?egyptianculture { ?egyptianculture a skos:Concept .
-filter(regex(?egyptianculture, "egypt", "i"))
-filter(regex(?egyptianculture, "culture", "i")) }
+FILTER(regex(?egyptianculture, "egypt", "i"))
+FILTER(regex(?egyptianculture, "culture", "i")) }
 
 ```
 
@@ -211,7 +211,7 @@ MINUS {?sub <http://www.w3.org/2004/02/skos/core#broader> ?egyptianculture } } g
 I'm still not convinced by the number of resources we have, let's say we want to get more elements by expanding what we we know of Egyptian Deities and Egyptian Mythology.
 
 Let's look at egyptian deities first. We can see that it is related to 
-http://dbpedia.org/resource/List_of_Egyptian_deities and we can see that here there are all the egyptian deities, fundamental for the graph we want to create. But are we sure that all these elements are Egyptian Deities? It seems that there is some noise here, we want to filter that noise out so let's look at one element that we know it's a deity. for example Seth. We can see that Seth has as subject dbc:Egyptian_gods that is a narrower concept for egyptian_deities
+http://dbpedia.org/resource/List_of_Egyptian_deities and we can see that here there are all the egyptian deities, fundamental for the graph we want to create. But are we sure that all these elements are Egyptian Deities? It seems that there is some noise here, we want to FILTER that noise out so let's look at one element that we know it's a deity. for example Seth. We can see that Seth has as subject dbc:Egyptian_gods that is a narrower concept for egyptian_deities
 
 Ok, let's try to do this query then
 
@@ -237,7 +237,7 @@ SELECT ?commonentity WHERE  { dbr:Egyptian_mythology dbo:wikiPageWikiLink ?commo
 
 ```
 
-Ok there are some but we don't want to add more deities so let's filter them out
+Ok there are some but we don't want to add more deities so let's FILTER them out
 
 ```sparql
 SELECT DISTINCT ?commonentity WHERE  { dbr:Egyptian_mythology dbo:wikiPageWikiLink ?commonentity .
@@ -263,7 +263,7 @@ So now we have a list of elements that are somehow associated with Egyptian Myth
 We want to get a list of the elements associated to other categories that we have seen before, without actually going too much into details with them, let's do it with this query
 
 ``` sparql
-SELECT ?egyptianculture (group_concat(?sub;SEPARATOR=" ") as ?subs)   { 
+SELECT ?egyptianculture (GROUP_CONCAT(?sub;SEPARATOR=" ") AS ?subs)   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub skos:broader ?egyptianculture } } group by ?egyptianculture
@@ -273,7 +273,7 @@ We want to exclude those concepts that we already have in the previous 2 lists s
 
 ```sparql
 
-SELECT ?egyptianculture (group_concat(?sub;SEPARATOR=" ") as ?subs)   { 
+SELECT ?egyptianculture (GROUP_CONCAT(?sub;SEPARATOR=" ") AS ?subs)   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub skos:broader ?egyptianculture }
@@ -396,7 +396,7 @@ ORDER BY ?egyptianculture
 
 ```
 
-We download the results of this query as a csv. We start to filter for each category. We take first ancient egypt, we copy those code and then go to http://removelinebreaks.net . We copy this list, go to a notepad and press ctrl + h (or go to edit, replace ) we replace "http://www.wikidata.org/entity/" with "wd:" . Then we can go on http://query.wikidata.org and do this query:
+We download the results of this query as a csv. We start to FILTER for each category. We take first ancient egypt, we copy those code and then go to http://removelinebreaks.net . We copy this list, go to a notepad and press ctrl + h (or go to edit, replace ) we replace "http://www.wikidata.org/entity/" with "wd:" . Then we can go on http://query.wikidata.org and do this query:
 
 ```sparql
 
