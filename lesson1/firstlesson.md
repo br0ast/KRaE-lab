@@ -66,7 +66,7 @@ ASK {dbr:Culture ?something ?somethingelse}
 
 ```
 
-How would we check? Any Volunteer to tell me?
+How would we check?
 
 Let's now see what are the crossing between this
 
