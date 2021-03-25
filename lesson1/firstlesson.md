@@ -21,11 +21,11 @@ ASK {dbr:Egypt ?something ?somethingelse}
 
 
 
-We use ASK instead of select if we want to check whether something exists or not, we don't care about what it is. It returns true so that means that dbr:Egypt exists.
+We use ASK instead of SELECT if we want to check whether something exists or not, we don't care about what it is. It returns true so that means that dbr:Egypt exists.
 
 ```sparql
 
-select ?objects {dbr:Egypt ?prop ?objects} 
+SELECT ?objects {dbr:Egypt ?prop ?objects} 
 ```
 
 
@@ -34,7 +34,7 @@ Let's see every resource that is in the range of Egypt. There are a lot... let's
 
 ```sparql
 
-select (count(?objects) as?tot) {dbr:Egypt ?prop ?objects} 
+SELECT (count(?objects) as?tot) {dbr:Egypt ?prop ?objects} 
 
 ```
 
@@ -42,16 +42,16 @@ Ok they are a lot... but some of them are just label based. Let's focus on the u
 
 ```sparql
 
-select distinct ?objects {dbr:Egypt ?prop ?objects .
+SELECT DISTINCT ?objects {dbr:Egypt ?prop ?objects .
 ?objects ?prop2 ?moreobjects } 
 
 ```
 
-We do this because a non-uri will never take the role of the subject in a triple, so by doing this we are filtering them. Pay attention to the distinct!
+We do this because a non-uri will never take the role of the subject in a triple, so by doing this we are filtering them. Pay attention to the DISTINCT!
 
 ```sparql
 
-select (count(distinct ?objects)as ?tot) {dbr:Egypt ?prop ?objects .
+SELECT (count(DISTINCT ?objects)as ?tot) {dbr:Egypt ?prop ?objects .
 ?objects ?prop2 ?moreobjects } 
 
 ```
@@ -72,7 +72,7 @@ Let's now see what are the crossing between this
 
 ```sparql
 
-select distinct ?egyptianculture { dbr:Egypt ?property ?egyptianculture .
+SELECT DISTINCT ?egyptianculture { dbr:Egypt ?property ?egyptianculture .
 dbr:Culture ?property ?egyptianculture }
 
 ```
@@ -83,7 +83,7 @@ Let's try to get the concept of culture, concepts are generally expressed by the
 
 ```sparql
 
-select ?egyptianculture { ?egyptianculture ?prop dbr:Egypt ;
+SELECT ?egyptianculture { ?egyptianculture ?prop dbr:Egypt ;
 rdf:type skos:Concept }
 
 ```
@@ -92,7 +92,7 @@ No luck with this
 
 ```sparql
 
-select distinct ?egyptianculture { dbr:Egypt ?something ?egyptianculture .
+SELECT DISTINCT ?egyptianculture { dbr:Egypt ?something ?egyptianculture .
 ?egyptianculture rdf:type skos:Concept }
 
 ```
@@ -101,7 +101,7 @@ Or this. Let's try to look for a regex.
 
 ```sparql
 
-select distinct ?egyptianculture { ?egyptianculture a skos:Concept .
+SELECT DISTINCT ?egyptianculture { ?egyptianculture a skos:Concept .
 filter(regex(?egyptianculture, "egypt", "i")) }
 
 ```
@@ -110,7 +110,7 @@ It takes a lot of time, too many results, let's try with a double regex.
 
 ```sparql
 
-select distinct ?egyptianculture { ?egyptianculture a skos:Concept .
+SELECT DISTINCT ?egyptianculture { ?egyptianculture a skos:Concept .
 filter(regex(?egyptianculture, "egypt", "i"))
 filter(regex(?egyptianculture, "culture", "i")) }
 
@@ -129,7 +129,7 @@ let's see all the properties and objects associates with these values
 
 ```sparql
 
-select distinct ?egyptianculture ?prop ?obj { 
+SELECT DISTINCT ?egyptianculture ?prop ?obj { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture }
 ?egyptianculture ?prop ?obj .
 ?obj ?prop2 ?whatever}
@@ -155,7 +155,7 @@ let's see, let's start with the original list and then we will add the other thi
 
 ``` sparql
 
-select distinct ?sub ?prop ?egyptianculture   { 
+SELECT DISTINCT ?sub ?prop ?egyptianculture   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture }
 ?sub ?prop ?egyptianculture .}
 GROUP BY ?egyptianculture
@@ -166,7 +166,7 @@ There is way more now, but before getting them all we want to exclude the ones t
 
 ```sparql
 
-select distinct ?sub ?prop ?egyptianculture   { 
+SELECT DISTINCT ?sub ?prop ?egyptianculture   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub <http://www.w3.org/2004/02/skos/core#broader> ?egyptianculture } }
@@ -178,7 +178,7 @@ Now we also add the last 7 categories discovered after
 
 ``` sparql
 
-select distinct ?sub ?prop ?egyptianculture   { 
+SELECT DISTINCT ?sub ?prop ?egyptianculture   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Egyptian_mythology dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_deities dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub <http://www.w3.org/2004/02/skos/core#broader> ?egyptianculture } }
@@ -190,7 +190,7 @@ Let's count them
 
 ```sparql
 
-select (count(distinct ?sub) as?tot)   { 
+SELECT (count(DISTINCT ?sub) as?tot)   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Egyptian_mythology dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_deities dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub <http://www.w3.org/2004/02/skos/core#broader> ?egyptianculture } }
@@ -201,7 +201,7 @@ Now let's divide the count by the category
 
 ```sparql
 
-select ?egyptianculture (count(distinct ?sub) as?tot)   { 
+SELECT ?egyptianculture (count(DISTINCT ?sub) as?tot)   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Egyptian_mythology dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_deities dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub <http://www.w3.org/2004/02/skos/core#broader> ?egyptianculture } } group by ?egyptianculture
@@ -217,7 +217,7 @@ Ok, let's try to do this query then
 
 ```sparql
 
-select distinct ?god where  {  dbr:List_of_Egyptian_deities dbo:wikiPageWikiLink  ?god .
+SELECT DISTINCT ?god WHERE  {  dbr:List_of_Egyptian_deities dbo:wikiPageWikiLink  ?god .
 ?god dct:subject ?deity .
 {?deity skos:broader dbc:Egyptian_deities} UNION {?deity skos:broader dbc:Egyptian_gods}
 }
@@ -230,7 +230,7 @@ Now let's focus on the Egyptian Mythology part. We can see that there is an egyp
 
 ```sparql
 
-select ?commonentity where  { dbr:Egyptian_mythology dbo:wikiPageWikiLink ?commonentity .
+SELECT ?commonentity WHERE  { dbr:Egyptian_mythology dbo:wikiPageWikiLink ?commonentity .
 ?commonentity dct:subject ?deity .
 ?deity skos:broader dbc:Egyptian_deities
  }
@@ -240,7 +240,7 @@ select ?commonentity where  { dbr:Egyptian_mythology dbo:wikiPageWikiLink ?commo
 Ok there are some but we don't want to add more deities so let's filter them out
 
 ```sparql
-select distinct ?commonentity where  { dbr:Egyptian_mythology dbo:wikiPageWikiLink ?commonentity .
+SELECT DISTINCT ?commonentity WHERE  { dbr:Egyptian_mythology dbo:wikiPageWikiLink ?commonentity .
 MINUS {?commonentity dct:subject ?deity .
 {?deity skos:broader dbc:Egyptian_deities} UNION {?deity skos:broader dbc:Egyptian_gods} }
  }
@@ -251,7 +251,7 @@ This is a list of uris linked to the resource Egyptian_mythology, but what if we
 Let's try with a query.
 
 ```sparql
-select distinct ?commonentity where  { {dbr:Egyptian_mythology dbo:wikiPageWikiLink ?commonentity . } UNION {dbc:Egyptian_mythology dbo:wikiPageWikiLink ?commonentity . }
+SELECT DISTINCT ?commonentity WHERE  { {dbr:Egyptian_mythology dbo:wikiPageWikiLink ?commonentity . } UNION {dbc:Egyptian_mythology dbo:wikiPageWikiLink ?commonentity . }
 MINUS {?commonentity dct:subject ?deity .
 {?deity skos:broader dbc:Egyptian_deities} UNION {?deity skos:broader dbc:Egyptian_gods} }
  }
@@ -263,7 +263,7 @@ So now we have a list of elements that are somehow associated with Egyptian Myth
 We want to get a list of the elements associated to other categories that we have seen before, without actually going too much into details with them, let's do it with this query
 
 ``` sparql
-select ?egyptianculture (group_concat(?sub;SEPARATOR=" ") as ?subs)   { 
+SELECT ?egyptianculture (group_concat(?sub;SEPARATOR=" ") as ?subs)   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub skos:broader ?egyptianculture } } group by ?egyptianculture
@@ -273,7 +273,7 @@ We want to exclude those concepts that we already have in the previous 2 lists s
 
 ```sparql
 
-select ?egyptianculture (group_concat(?sub;SEPARATOR=" ") as ?subs)   { 
+SELECT ?egyptianculture (group_concat(?sub;SEPARATOR=" ") as ?subs)   { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub skos:broader ?egyptianculture }
@@ -307,10 +307,10 @@ let's just look at the properties that we have for Anubis
 
 
 ```sparql
-select distinct ?prop where { {dbr:Anubis ?prop ?something} UNION {?something2 ?prop dbr:Anubis} } 
+SELECT DISTINCT ?prop WHERE { {dbr:Anubis ?prop ?something} UNION {?something2 ?prop dbr:Anubis} } 
 ```
 
-Let's select a few that we will use in our graph
+Let's SELECT a few that we will use in our graph
 
 * http://xmlns.com/foaf/0.1/depiction -> foaf:depiction
 * http://dbpedia.org/property/parents -> dbp:parents
@@ -383,7 +383,7 @@ Let's try to see if we can get a Wikidata URI from these entities. Let's see the
 
 ```sparql
 
-select distinct ?egyptianculture ?sub ?wikidata  { 
+SELECT DISTINCT ?egyptianculture ?sub ?wikidata  { 
 VALUES ?egyptianculture { dbc:Egyptian_culture dbc:Egyptian_mythology_in_popular_culture dbc:Ancient_Egyptian_culture dbc:Ancient_Egypt_in_popular_culture dbc:Works_about_ancient_Egypt dbc:Ancient_Egypt dbc:Book_of_the_Dead dbc:Egyptian_legendary_creatures dbc:Locations_in_Egyptian_mythology }
 ?sub ?prop ?egyptianculture .
 MINUS {?sub skos:broader ?egyptianculture }
@@ -400,7 +400,7 @@ We download the results of this query as a csv. We start to filter for each cate
 
 ```sparql
 
-select  ?entity ?entityLabel ?type ?typeLabel  WHERE { 
+SELECT  ?entity ?entityLabel ?type ?typeLabel  WHERE { 
   VALUES ?entity {  wd:Q496002
   wd:Q253155
   wd:Q16887603  wd:Q1536350  wd:Q60744726  wd:Q10521987  wd:Q5445737  wd:Q3488951  wd:Q30715241  wd:Q7180697  wd:Q719699
