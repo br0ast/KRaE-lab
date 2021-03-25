@@ -298,7 +298,7 @@ Let's look at Anubis (https://dbpedia.org/page/Anubis)
 we could just write
 
 ```sparql
-describe dbr:Anubis
+DESCRIBE dbr:Anubis
 ```
 
 But as you can see it gets quite messy
