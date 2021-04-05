@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="This webpage is dedicated to the materials of the Laboratory of Knowledge Representation and Extraction">
+  <meta name="author" content="Bruno Sartini">
+
+  <title>KRaE Tutorial 2: Google Colab Essentials</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="../vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="../css/stylish-portfolio.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="../index.html#page-top"> KRaE Lab</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="../index.html#page-top">Home</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="../index.html#about">About</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="../index.html#timetable">Timetable</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="../index.html#services">Lessons</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="../index.html#portfolio">Tutorials and Guides</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <section class="callout">
+    <div class="container text-center">
+      <h2 class="mx-auto mb-5">Tutorial
+        <em>One</em>
+        Protégé</h2>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#l1content">Go to the content!</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="content-section bg-light" id="l1content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h2 class="text-center">Aim of the tutorial</h2>
+          <p class="lead mb-5">The aim of this guide is to get familiar with Google Colab. In particular, by following this tutorial you will be able to create an ontology and then 
+              automatically infer information on that ontology by exploiting OWL's language logical structure combined with the built in reasoners offered by Protégé. It is based on the 5.5 version of Protégé. Please verify the version in case you find some inconsistencies between your results and the ones provided here. </p> <p class="lead mb-5">This tutorial is a slightly modified dhdk-esque version of the tutorial created by Fabio Papacchini available <a href="https://cgi.csc.liv.ac.uk/~frank/teaching/comp08/protege_tutorial.pdf">here</a>.
+    <br><br> The Ontology built using this tutorial will be a very simple conceptualization of University Exams.
+          </p>
+          <h2 class="text-center">Steps</h2>
+          <p class="lead mb-5">Every step is accompanied by a reference image and additional informations if needed.
+        </p>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingZero">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseOne">
+                      <span class="lead mb-5">Step #0 Some definitions and clarifications </span>
+                    </button>
+                  </h5>
+                </div>
+            
+                <div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordion">
+                  <div class="card-body">
+                    <p class="lead mb-5">Before starting, during this tutorial you will encounter these particular terms:
+                        <ul>
+                            <li>Class: classes in Protégé are considered as the concepts of your conceptualizations, they can be considered either as abstract terms that are defined by their values, or as abstract collections of terms that have some values. Classes are generally organized in hierarchies. </li>
+                            <li>Object Property: an object property is a link between two or more classes. Be aware that ontologies are directed graphs, so the source node (domain) from which the object property starts is different than the target node (range).
+                                (Example: in this triple "ex:Bruno isTutorOf ex:DHDK" Let's say that Bruno is from class "Person" and "DHDK" belongs to the class "MasterDegree". In this case, the property "isTutorOf" has Person as a domain and MasterDegree as a range.
+                                You are not supposed to write "ex:DHDK isTutorOf ex:Bruno", otherwise you are saying that Bruno is a Master Degree and DHDK is a Person)
+                            </li>
+                            <li>Data Property: A data property is a link between a Class and a data value. For example ex:Bruno hasFullName "Bruno Sartini". In this case, the domain of this relationship is a class, but the range is a datatype (which can be strings, integers, dates, uris...)</li>
+                            <li>Axioms and Restrictions: axioms are considered as logical rules applied to your ontology. They can be used to create restriction as to what can belong to a certain class or not. Examples: let's imagine that the class Person has the restriction: "ex:hasBirthDate exactly 1 ex:Birthdate". This means that one individual can be considered as a Person, in your conceptualization, only if it has exactly one birth date. </li>
+                        </ul>
+                        Moreover, you fill find some references to Manchester Syntax, please refer to <a href="https://www.w3.org/TR/owl2-manchester-syntax/">this document</a> for more information about that.
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <span class="lead mb-5">Step #1. Open Protégé. </span>
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <p class="lead mb-5">By going to the Entities and then Classes sections your screen should look like this:</p>
+                  <img src="../img/1OpenProteget.png" class="img-fluid" alt="Responsive image">
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="lead mb-5">Step #2. Create a new class.</span>
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <p class="lead mb-5">Let's create our first class: Exam. Select owl:Thing from the classes and follow the steps highlighted in the image.</p>
+                    <img src="../img/2CreateaNewClass.png" class="img-fluid" alt="Responsive image">
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <span class="lead mb-5">Step #3. Change the prefix.</span>
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <p class="lead mb-5">To change the prefix of your ontology, go to the tab Active Ontology, then click on Ontology Prefixes and follow the indications in the image. As for what to put in the field, I suggest you to write ":" as it should leave it blank.</p>
+                    <img src="../img/3ChangePrefix1.png" class="img-fluid" alt="Responsive image">
+                    <img src="../img/4ChangePrefix2.png" class="img-fluid" alt="Responsive image">
+                </div>
+              </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                      <span class="lead mb-5">Step #4. Delete a class.</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">To delete a class from your ontology. Simply select it and click the highlighted button in the image</p>
+                      <img src="../img/5Delete.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingFive">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      <span class="lead mb-5">Step #5. Create a Class Hierarchy.</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">An easier way to create class, if you already have a class hierarchy, is to use the function create a class hierarchy in Protégé. Follow the images to create your class hierarchy of the Exams. You can take the text from the block below</p>
+                      <pre><samp>
+Exam
+	NamedExam
+		KnowledgeOCH		
+		KnowledgeRaE
+		ScolarlyEditing
+		Usability
+		MachineLearning
+Faculty
+	FICLIT
+	ComputerScience
+
+EvaluationType
+		Written
+		Oral
+		Project
+Structure
+		Modular
+		Single
+    </samp></pre>
+                      <img src="../img/6CreateClassHierarchy.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/7CreateClassHierarchy2.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingSix">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                      <span class="lead mb-5">Step #6. Expand the hierarchy view and check initial axioms.</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">This step serves as a validation check for the things done so far. Expand the class hierarchy by clicking on the arrows that you can see highlighted in the images below. Then, click a class and click on the usage tab on the right to check its axioms. Everything should look like the images provided</p>
+                      <img src="../img/8ExpandClasses.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/9DescriptionsandAxioms.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingSeven">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                      <span class="lead mb-5">Step #7. Create object properties</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you will create the object properties that will represent the possible relationships between the classes you have created before. The three object property that will be created are:</p>
+                          <ul>
+                              <li><samp>hasStructure</samp></li>
+                              <li><samp>belongsToFaculty</samp></li>
+                              <li><samp>hasEvaluationType</samp></li>
+                          </ul>
+                          <p class="lead mb-5">Go to the object tab and can create them by following the steps shown in the images below.
+                      </p>
+                      <img src="../img/10CreateObjectProperty1.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/11CreateObjectProperty2.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingEight">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                      <span class="lead mb-5">Step #8. Add domain and range to the properties.</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you will add a Range and a Domain to the properties just created. Follow the examples in the images below, these are the domain and range for each property (in the image there is only one domaina and range added, add them all):<br>
+                        <ul>
+                          <li>hasStructure: Exam (domain), structure (range)</li>
+                          <li>hasEvaluationType: Exam (domain), EvaluationType (range)</li>
+                          <li>hasFaculty: Exam (domain), Faculty (range)</li>
+                        </ul>
+                      </p>
+                      <img src="../img/12AddaDomain.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/13AddARange.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingNine">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                      <span class="lead mb-5">Step #9. Add axioms/restrictions to existing classes</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you will add the restrictions to some of the generated classes in forms of Axioms. These axioms will be useful for the automatic inference based classification of the NamedExams. For each name exams add the axioms written below following the instructions in the images: <br>
+                      <ul>
+                        <li>KnowledgeOCH: <ul>
+                          <li><samp>subClassOf :belongsToFaculty some :FICLIT</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some :Project</samp></li>
+                          <li><samp>subClassOf :hasStructure some :Modular</samp></li>
+                        </ul> </li>
+                        <li>KnowledgeRaE: <ul>
+                          <li><samp>subClassOf :belongsToFaculty some :FICLIT</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some:Oral</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some:Written</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some:Project</samp></li>
+                          <li><samp>subClassOf :hasStructrue some :Modular</samp></li>
+                        </ul></li>
+                        <li>MachineLearning: <ul>
+                          <li><samp>subClassOf :belongsToFaculty some :ComputerScience</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some:Project</samp></li>
+                          <li><samp>subClassOf :hasStructure some :Single</samp></li>
+                        </ul></li>
+                        <li>ScholarlyEditing: <ul>
+                          <li><samp>subClassOf :belongsToFaculty some :FICLIT</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some:Oral</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some:Written</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some:Project</samp></li>
+                          <li><samp>subClassOf :hasStructure some:Single</samp></li>
+                        </ul></li>
+                        <li>Usability: <ul>
+                          <li><samp>subClassOf :belongsToFaculty some :FICLIT</samp></li>
+                          <li><samp>subClassOf :belongsToFaculty some :ComputerScience</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some :Oral</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some :Written</samp></li>
+                          <li><samp>subClassOf :hasEvaluationType some :Project</samp></li>
+                          <li><samp>subClassOf :hasStructure some:Single</samp></li>
+                        </ul></li>
+                      </ul> </p>
+                      <img src="../img/14AddAxioms1.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/15Addalltheaxiomsforeachexam.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTen">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                      <span class="lead mb-5">Step #10. Add equivalent axiom.</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you will add one Equivalent to axiom to the class Structure. It will be equivalent to <samp>:Single or :Modular</samp>. Follow the images for the instructions, then check if the property <samp>:hasStructure</samp> looks like the one in the second image</p>
+                      <img src="../img/16AddEquivalentAxiom.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/17Noticethechange.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingEleven">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                      <span class="lead mb-5">Step #11. Create a class and turn it into a defined class.</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you will create the first class that will be used as a defined class. It will be useful for the reasoner-based classification. Follow the images to create a new class and make it defined. You have to create a normal class like always, then add the restriction action and then use the Protégé command to make it a defined class.</p>
+                      <img src="../img/18AddDefinableClass.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/19AddAxiomsToDefinedClass.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/20Makeitadefinedclass.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwelve">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                      <span class="lead mb-5">Step #12. Check the class and then add all the other defined classes.</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">First of all, check whether your class looks like the one in the first image. Then proceed to create the other classes, which are all subclasses of <samp>:Exam</samp>, following these instructions: 
+                        <ul>
+                          <li>Name: <samp>ComputerScienceExam</samp>, axioms:<ul>
+                            <li><samp>:subClassOf :belongsToFaculty some :ComputerScience</samp></li>
+                          </ul></li>
+                          <li>Name: <samp>ModularExam</samp>, axioms: <ul>
+                            <li><samp>:subClassOf :hasStructure some :Modular</samp></li>
+                          </ul></li>
+                          <li>Name: <samp>MultiEvaluationExam</samp>, axioms:<ul>
+                            <li><samp>:subClassOf :hasEvaluationType some :Project</samp></li>
+                            <li><samp>:subClassOf :hasEvaluationType some :Written</samp></li>
+                            <li><samp>:subClassOf :hasEvaluationType some :Oral</samp></li>
+                          </ul></li>
+                          <li>Name: <samp>OralEvaluationExam</samp>, axioms:<ul>
+                            <li><samp>:subClassOf :hasEvaluationType some :Oral</samp></li>
+                          </ul></li>
+                          <li>Name: <samp>ProjectEvaluationExam</samp>, axioms:<ul>
+                            <li><samp>:subClassOf :hasEvaluationType some :Project</samp></li>
+                          </ul></li>
+                          <li>Name: <samp>WrittenExaminationExam</samp>, axioms:<ul>
+                            <li><samp>:subClassOf :hasEvaluationType some :Written</samp></li>
+                          </ul></li>
+                          <li>Name: <samp>SharedExam</samp>, axioms:<ul>
+                            <li><samp>:subClassOf :belongsToFaculty some :FICLIT</samp></li>
+                            <li><samp>:subClassOf :belongsToFaculty some :ComputerScience</samp></li>
+                          </ul></li>
+                          <li>Name: <samp>SingleExam</samp>, axioms:<ul>
+                            <li><samp>:subClassOf :hasStructure some :Single</samp></li>
+                          </ul></li>
+                        </ul></p>
+                        <p class="lead mb-5">Make all of them defined classes and they should look like the second image.
+                      </p>
+                      <img src="../img/21ShouldLooklikethis.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/22AddAllTheAxioms.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThirteen">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                      <span class="lead mb-5">Step #13. Add a data property</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you will add a Data Property, go on the data properties tab and create it as shown in the images.</p>
+                      <img src="../img/23AddDataProperty.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingSix">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                      <span class="lead mb-5">Step #14. Add a range and domain to the data property</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you just have to add a domain and a range to the data property previously created like shown in the images</p>
+                      <img src="../img/24AddDomain.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/25AddRange.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingFifteen">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
+                      <span class="lead mb-5">Step #15. Add an axiom related to the data property</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseFifteen" class="collapse" aria-labelledby="headingFifteen" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you will add an axiom to the class NamedExam. Look at the images to see how to add an axiom related to the data property previously created. Be careful to follow every step</p>
+                      <img src="../img/26AddDataPropertyAxiom.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingSixteen">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
+                      <span class="lead mb-5">Step #16. Start the reasoner and look at the inferences.</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseSixteen" class="collapse" aria-labelledby="headingSixteen" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you will start the Reasoner, a tool that will help you to check whether your ontology is consistent (if your axioms make sense all together) and also it will generate some infereces based on the axioms that you have created before. Follow the images to start the reasoner and change the view from asserted to inferred to see the inferences. As you will see, all the named exams will be reclassified under the defined classes.</p>
+                      <img src="../img/26bstartthereasoner.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/27LookAtTheInferences.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingSeventeen">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
+                      <span class="lead mb-5">Step #17. Save your ontology.</span>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseSeventeen" class="collapse" aria-labelledby="headingSeventeen" data-parent="#accordion">
+                  <div class="card-body">
+                      <p class="lead mb-5">In this step you will save your ontology. In the first image it is shown how to save it as a normal version. In the second image instead, it is shown how to save also the inferences made by the reasoner.</p>
+                      <img src="../img/28SaveTheOntologyNormally.png" class="img-fluid" alt="Responsive image">
+                      <img src="../img/29SaveTheOntologyWithInferences.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+          </div>
+          <br><p class="lead mb-5">At the end of the tutorial, your 2 saved ontologies should be the same as the files you can find <a href="https://github.com/br0ast/KRaE-lab/tree/main/protegetutorial/output" target="_blank">here</a>.</p>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Callout -->
+
+
+  <!-- Portfolio -->
+  <section class="content-section" id="portfolio">
+    <div class="container">
+      <div class="content-section-heading text-center">
+        <h3 class="text-secondary mb-0">Tutorials</h3>
+        <h2 class="mb-5">Suggested Tutorials and Guides</h2>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#">
+            <div class="caption">
+              <div class="caption-content">
+                <div class="h2 text-dark">Protégé Tutorial</div>
+                <p class="mb-0 text-dark"><strong>Learn how to create your ontology on Protégé, exploit the logical backend of OWL to generate inferences</strong></p>
+              </div>
+            </div>
+            <img class="img-fluid" src="../img/1OpenProtege.png" alt="protegetutorial1">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#!">
+            <div class="caption">
+              <div class="caption-content">
+                <div class="h2">tbd</div>
+                <p class="mb-0">tbd</p>
+              </div>
+            </div>
+            <img class="img-fluid" src="../img/portfolio-2.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#!">
+            <div class="caption">
+              <div class="caption-content">
+                <div class="h2">tbd</div>
+                <p class="mb-0">tbd</p>
+              </div>
+            </div>
+            <img class="img-fluid" src="../img/portfolio-3.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#!">
+            <div class="caption">
+              <div class="caption-content">
+                <div class="h2">tbd</div>
+                <p class="mb-0">tbd</p>
+              </div>
+            </div>
+            <img class="img-fluid" src="../img/portfolio-4.jpg" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="text-muted small mb-0">Copyright &copy; KRaE Lab 2021</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/stylish-portfolio.min.js"></script>
+
+</body>
+
+</html>
