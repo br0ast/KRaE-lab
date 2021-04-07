@@ -85,7 +85,7 @@ Here is your data:
 ```json
 {
   "10": {
-    "text": "General: the perfect number; associated with the cosmos, return to unity, balance, completeness, kingship, infinite power, perfection, finality, androgyny, marriage, spiritual achievement, order, involution and evolution, the archangel Lumiel @ Buddhist: the ten moral duties of the code of Manou • Babylonian associated with Marduk @ tarot: Wheel of Fortune"
+    "text": "General: the perfect number; associated with the cosmos, return to unity, balance, completeness, kingship, infinite power, perfection, finality, androgyny, marriage, spiritual achievement, order, involution and evolution, the archangel Lumiel @ Buddhist: the ten moral duties of the code of Manou @ Babylonian: associated with Marduk @ tarot: Wheel of Fortune"
   },
   "20": {
     "text": "General: continuity; dynasty; an intensifier; the whole man; an indefinite number; shares the general symbolism of 10 @ Kabalistic : physical strength @ Mayan: associated with the sun god; days of a month in the religious calendar; the base of their number system; Primal Oneness @ tarot : Judgment"
