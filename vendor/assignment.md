@@ -13,7 +13,7 @@ Look at the data, try to imagine possible classes and properties that emerge fro
 
 ## Understand the syntax of the data
 
-What are the separators used in the data? in what context are they use? Can you generalize them to process the data automatically? How? Ask yourselves this questions, and it will be easier to adapt the algorithm proposed in class to your data
+What are the separators used in the data? In what context are they used? Can you generalize them to process the data automatically? How? Ask yourselves this questions, and it will be easier to adapt the algorithm proposed in class to your data
 
 ***
 
