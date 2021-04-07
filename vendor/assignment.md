@@ -11,6 +11,12 @@ Look at the data, try to imagine possible classes and properties that emerge fro
 
 ***
 
+## Understand the syntax of the data
+
+What are the separators used in the data? in what context are they use? Can you generalize them to process the data automatically? How? Ask yourselves this questions, and it will be easier to adapt the algorithm proposed in class to your data
+
+***
+
 ## Develop Competency Questions
 
 By looking at the data, come up with **at least** 3 competency questions. Try to create simple and complex competency questions.
@@ -34,7 +40,7 @@ Use Protégé to formalized the defined classes, properties and data properties 
 ## Create the ABOX
 
 Encode the data that you've worked on at the beginning using your ontology. You can do that manually or re-adapt the algorithm that I have given you during the class. 
-**No need to clean the data, it should be clean**
+**No need to clean the data, it should be clean, but you will need to process it if you want to create the ABOX automatically, by adapting the scripts I have created to the syntax of the new data**
 
 ***
 
