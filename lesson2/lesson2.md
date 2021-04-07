@@ -71,12 +71,21 @@ Then, _Person_ can be linked to _Pet_ with _hasPet/ hasOwner_ (inverse).
 Finally, _BiologicalBeing_ can have a data property _name_ with a literal or string range.
 We can choose the prefix _per:_ for our ontology.
 
+![alt text](onto1.png)
+![alt text](onto2.png)
+![alt text](onto3.png)
+
+The tbox is also available [here](tbox.owl)
 
 
 ***
 
 ## Create the ABOX
 
-Now we have our **TBOX**, to get our ABOX we can either encode it manually or we can use a Python Algorithm along with the cleaning of the data algorithm, if you are brave enough to take a look at it it’s in this Colab File.
+Now we have our **TBOX**, to get our ABOX we can either encode it manually or we can use a Python Algorithm along with the cleaning of the data algorithm, if you are brave enough to take a look at it it’s in [this Colab File](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/lesson2/Lesson_2_KRaE_lab.ipynb).
 
-If not once you are done manually creating you ABOX with the ontology, you can load it and try to query it on the same colab file
+The abox is available [here](abox.ttl)
+
+If not once you are done manually creating you ABOX with the ontology, you can load it and try to query it on the [same colab file](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/lesson2/Lesson_2_KRaE_lab.ipynb)
+
+Just go down till the query part.
