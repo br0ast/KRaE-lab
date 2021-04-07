@@ -106,7 +106,7 @@ Here is your data:
     "text": "General: lucky; associated with the archangel Michael @ Japanese: misfortune @ tarot: Sun"
   },
   "21": {
-    "text": "General: absolute truth; a lucky number; a sacred number; traditional age of majority; associated with the archangel Cassiel, excellence, harmony of creation @ Christian: union of the Trinity @ Italian: letters in the alphabet @ Jewish: perfection • tarot World"
+    "text": "General: absolute truth; a lucky number; a sacred number; traditional age of majority; associated with the archangel Cassiel, excellence, harmony of creation @ Christian: union of the Trinity @ Italian: letters in the alphabet @ Jewish: perfection @ tarot: World"
   }
 }
 ```
