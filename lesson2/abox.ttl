@@ -1,0 +1,100 @@
+@prefix per: <http://example.org/element/> .
+
+per:Diamond a per:Person ;
+    per:hasParent per:Luna ;
+    per:name "Diamond" .
+
+per:Fire a per:Dog ;
+    per:hasOwner per:Vera ;
+    per:name "Fire" .
+
+per:Grass a per:Dog ;
+    per:hasOwner per:Vera ;
+    per:name "Grass" .
+
+per:Happy a per:Snake ;
+    per:hasOwner per:Vera ;
+    per:name "Happy" .
+
+per:Lulu a per:Dog ;
+    per:hasOwner per:Luna ;
+    per:name "Lulu" .
+
+per:Stella a per:Person ;
+    per:hasPartner per:Luna ;
+    per:name "Stella" .
+
+per:Sun a per:Cat ;
+    per:hasOwner per:Luna ;
+    per:name "Sun" .
+
+per:Water a per:Dog ;
+    per:hasOwner per:Vera ;
+    per:name "Water" .
+
+per:Ember a per:Person ;
+    per:hasOffspring per:Luna ;
+    per:hasPartner per:Rain ;
+    per:name "Ember" .
+
+per:Cloud a per:Person ;
+    per:hasParent per:Rain ;
+    per:hasPartner per:Sky ;
+    per:hasSibling per:Luna ;
+    per:name "Cloud" .
+
+per:Rain a per:Person ;
+    per:hasOffspring per:Cloud,
+        per:Luna ;
+    per:hasPartner per:Ember ;
+    per:name "Rain" .
+
+per:Artemis a per:Person ;
+    per:hasOffspring per:Rosa,
+        per:Sky,
+        per:Vera ;
+    per:hasPartner per:Jeff ;
+    per:name "Artemis" .
+
+per:Jeff a per:Person ;
+    per:hasOffspring per:Rosa,
+        per:Sky,
+        per:Vera ;
+    per:hasPartner per:Artemis ;
+    per:name "Jeff" .
+
+per:Rosa a per:Person ;
+    per:hasParent per:Artemis,
+        per:Jeff ;
+    per:hasSibling per:Vera ;
+    per:name "Rosa" .
+
+per:Sky a per:Person ;
+    per:hasParent per:Artemis,
+        per:Jeff ;
+    per:hasPartner per:Cloud ;
+    per:hasSibling per:Rosa,
+        per:Vera ;
+    per:name "Sky" .
+
+per:Luna a per:Person ;
+    per:hasOffspring per:Diamond ;
+    per:hasParent per:Ember,
+        per:Rain ;
+    per:hasPartner per:Stella ;
+    per:hasPet per:Lulu,
+        per:Sun ;
+    per:hasSibling per:Cloud ;
+    per:name "Luna" .
+
+per:Vera a per:Person ;
+    per:hasParent per:Artemis,
+        per:Jeff ;
+    per:hasPet per:Fire,
+        per:Grass,
+        per:Happy,
+        per:Water ;
+    per:hasSibling per:Rosa,
+        per:Sky ;
+    per:name "Vera" .
+
