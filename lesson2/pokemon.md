@@ -3,7 +3,6 @@
 ```json
 
 {"Bulbasaur-P": {"text": "type:Grass, Poison; 4:tackle-normal; 10:Razorleaf-grass; 12:acid-poison; 16:evolution to Ivysaur"}}
-
 ```
 
 Look at this example. From this text we can say with direct relationships that
