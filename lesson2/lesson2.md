@@ -47,16 +47,16 @@ Competency questions are useful to explain what kind of knowledge you can/want t
 
 These are just some competency questions that can be formulated from the data:
 
-**CQ1)** Which people have siblings who have offspring?
-**CQ2)** What is the name of the dogs whose owner has parents?
-**CQ3)** Which partners don’t have offspring?
-**CQ4)** Which offspring have parents who have parents as well?
-By looking at the data, you can imagine some expected results:
+**CQ1)** Which people have siblings who have offspring? <br>
+**CQ2)** What is the name of the dogs whose owner has parents? <br>
+**CQ3)** Which partners don’t have offspring? <br>
+**CQ4)** Which offspring have parents who have parents as well? <br>
+By looking at the data, you can imagine some expected results:<br>
 
-**CQ1)** Cloud
-**CQ2)** “Lulu”, “Fire”, “Grass”, “Water”
-**CQ3)** Cloud, Sky
-**CQ4)** Diamond
+**CQ1)** Cloud <br>
+**CQ2)** “Lulu”, “Fire”, “Grass”, “Water” <br>
+**CQ3)** Cloud, Sky <br>
+**CQ4)** Diamond <br>
 
 ***
 ## Step 3: Create the TBOX
