@@ -48,6 +48,8 @@ Pay attention to the restrictions.
 ![alt text](tbox1.png)
 ![alt text](tbox2.png)
 
+you can find the tbox [here]()
+
 #### Formalize the Competency questions from the examples
 
 "With this ontology we want to know what are the conditions of a certain Pokémon evolution, and what are the Pokémon are not part of any evolution."
@@ -57,12 +59,13 @@ CQ2) Retrieve the Pokémon that are not part of any evolution. <br>
 
 #### Write a ABOX with the example provided
 
-You can find the ABOX here. It was developed using a very simple algorithm you can find here.
+You can find the ABOX [here](). It was developed using a very simple algorithm you can find [here](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/lesson3/Verysimpleturtleandquery.ipynb).
 
 #### Formalized the queries in SPARQL language and query your ABOX to check if the answers are correct according to what you expect
 
 CQ1 expectation = level16 <br>
 CQ2 expectation = Stantler
 
+You can find the queries and the results in the same file [here](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/lesson3/Verysimpleturtleandquery.ipynb)
 
 

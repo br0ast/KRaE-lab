@@ -1,0 +1,36 @@
+@prefix pk: <http://example.org/pk/> .
+
+pk:Stantler a pk:Pokemon .
+
+pk:abraEv a pk:Evolution ;
+    pk:evolvedPokemon pk:Kadabra ;
+    pk:evolvingPokemon pk:Abra ;
+    pk:hasCondition pk:level20 .
+
+pk:charmenderEv a pk:Evolution ;
+    pk:evolvedPokemon pk:Charmeleon ;
+    pk:evolvingPokemon pk:Charmender ;
+    pk:hasCondition pk:level16 .
+
+pk:charmenleonEv a pk:Evolution ;
+    pk:evolvedPokemon pk:Charizard ;
+    pk:evolvingPokemon pk:Charmeleon ;
+    pk:hasCondition pk:level36 .
+
+pk:kadabraEv a pk:Evolution ;
+    pk:evolvedPokemon pk:Alakazam ;
+    pk:evolvingPokemon pk:Kadabra ;
+    pk:hasCondition pk:kadabraTrade .
+
+pk:Abra a pk:Pokemon .
+
+pk:Alakazam a pk:Pokemon .
+
+pk:Charizard a pk:Pokemon .
+
+pk:Charmender a pk:Pokemon .
+
+pk:Charmeleon a pk:Pokemon .
+
+pk:Kadabra a pk:Pokemon .
+
