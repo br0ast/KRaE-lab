@@ -32,7 +32,7 @@ Taking a look at the theory, we can say that the emerging classes are:
 
 * Pokémon <br>
 * Evolution, with its subclasses LevelBasedEvolution and TradeBasedEvolution <br>
-* Condition, with its sublcasses Level and Trade <br>
+* EvolutionCondition, with its sublcasses Level and Trade <br>
 
 An evolution has one **evolvingPokemon** and an **evolvedPokemon** and **hasCondition** one of the two conditions. 
 
