@@ -48,7 +48,7 @@ Pay attention to the restrictions.
 ![alt text](tbox1.png)
 ![alt text](tbox2.png)
 
-you can find the tbox [here]()
+you can find the TBOX [here](https://github.com/br0ast/KRaE-lab/blob/main/lesson3/tbox.owl)
 
 #### Formalize the Competency questions from the examples
 
@@ -59,7 +59,7 @@ CQ2) Retrieve the Pokémon that are not part of any evolution. <br>
 
 #### Write a ABOX with the example provided
 
-You can find the ABOX [here](). It was developed using a very simple algorithm you can find [here](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/lesson3/Verysimpleturtleandquery.ipynb).
+You can find the ABOX [here](https://github.com/br0ast/KRaE-lab/blob/main/lesson3/abox.ttl). It was developed using a very simple algorithm you can find [here](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/lesson3/Verysimpleturtleandquery.ipynb).
 
 #### Formalized the queries in SPARQL language and query your ABOX to check if the answers are correct according to what you expect
 
