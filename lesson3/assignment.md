@@ -8,6 +8,7 @@
 
 **Pay attention to classes and properties that could be derived from this explanation, along with the restriction of each class.**
 
+***
 
 ### Read the Requirements
 
@@ -15,16 +16,24 @@
 
 **Rewrite the requirements as competency questions**
 
+***
+
 ### Develop the TBOX using Protégé
 
 **Specify the restrictions**
+
+***
 
 ### Read the example
 
 "For example, yellow blue and red are primary colors, yellow and red together make orange, and yellow and blue make green. Green and blue make the tertiary color blue-green."
 
+***
+
 ### Use the built in algorithm in colab to create the ABOX
 
 [here is the link](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/lesson3/Verysimpleturtleandquery.ipynb)
+
+***
 
 ### Convert the CQ in SPARQL query language and launch them on your ABOX using the same algorithm as above
