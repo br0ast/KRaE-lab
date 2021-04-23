@@ -63,7 +63,7 @@ WHERE { VALUES ?artwork { wd:Q12418 wd:Q3211030 }
        SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } }
 ```
 
-After you download your results as **csv**, you can convert them to a turtle using the function here: [click to open colab](lul)
+After you download your results as **csv**, you can convert them to a turtle using the function here: [click to open colab](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/hackathon1/HACKATHON_auxiliaryfunctions.ipynb)
 
 #### ABOX of the interaction ontology
 
