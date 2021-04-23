@@ -1,0 +1,6 @@
+{ 
+    "interaction1":{"text":"User: George. Exhibition: exhibition1. Associates artwork1 to: Family. Associates artwork2 to: The Lord of the Rings. Associates artwork3 to: Digital Humanities"},
+    "interaction2":{"text":"User: George. Exhibition: exhibition2. Associates artwork4 to: Trip. Associates artwork5 to: History"},
+    "interaction3":{"text":"User: Mary. Exhibition: exhibition1. Associates artwork1 to: Beach. Associates artwork2 to: Forest. Associates artwork3 to: Fire."},
+    "interaction4":{"text":"User: Mary. Exhibition: exhibition1. Associates artwork4 to: Hell. Associates artwork5 to: Heaven."}
+}

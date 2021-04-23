@@ -89,3 +89,11 @@ The abox is available [here](abox.ttl)
 If not once you are done manually creating you ABOX with the ontology, you can load it and try to query it on the [same colab file](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/lesson2/Lesson_2_KRaE_lab.ipynb)
 
 Just go down till the query part.
+
+
+
+Class1
+    class2
+Class3
+    class4
+    class5
