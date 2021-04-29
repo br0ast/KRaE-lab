@@ -16,7 +16,7 @@ Add at least one more requirement of your choice.
 The user might express an emotion in this iteraction.
 
 The emotions must follow the DHDK Emotion Theory:
-According to this ontology there are 4 primary emotions: Love, Excitement, Sadness, Dislike. There are also 8 secondary emotions: Adoration and Obsession are a particular kind of love. Hype and Enthusiasm are a particular kind of Excitement. Depression and Melancholy are a particular kind of Sadness. Hate and Disgust are a particular kind of Dislike.
+According to this theory there are 4 primary emotions: Love, Excitement, Sadness, Dislike. There are also 8 secondary emotions: Adoration and Obsession are a particular kind of love. Hype and Enthusiasm are a particular kind of Excitement. Depression and Melancholy are a particular kind of Sadness. Hate and Disgust are a particular kind of Dislike.
 
 Other kinds of interations can be seen in the json below
 
