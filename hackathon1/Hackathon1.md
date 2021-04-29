@@ -93,6 +93,32 @@ If not you can manually encode the turtle using both the information about emoti
 
 Once you have created the ABOX for the interaction ontology and the ABOX for the exhibition ontology, you can merge using the algorithm in the same colab file linked above.
 
-### The rest of the steps
+### Create the competency questions for both the ontologies
 
-Will be shown next lesson!
+Create some competency questions related to the first ontology based on the requirements
+
+Create some competency questions related to the second ontology based on the requirements and the data
+
+Create at least 1 competency question that can be answered by combining your two ontologies.
+
+### Formalize your questions in SPARQL language and test them
+
+You can re-use the functions to query your graph found [here](https://colab.research.google.com/github/br0ast/KRaE-lab/blob/main/lesson3/Verysimpleturtleandquery.ipynb) (this is the same ipynb of lesson 3, only reuse the query part)
+
+### Presentation for the Jury
+
+You need to present to the jury your 2 ontologies. Both the TBOX and the combined ABOX. You need to explained your process in transforming the json into your user interpretation ABOX and also the construct query that you used on wikidata to create the other ABOX.
+
+Finally, you need to present your CQs and how your ontology answers them.
+
+The criteria for the evaluations are:
+
+* Correctness in respect to the requirements
+* Domain representativeness
+* Clarity in Competency Questions
+
+Bonus:
+
+* Creativity in modeling
+
+
